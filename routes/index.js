@@ -18,13 +18,13 @@ exports.init = function(callback) {
  * Default index page fetches some content and returns it
  */
 
-async = require("async");
+async = require('async');
 
 exports.index = function(req, res) {
 	var t = 'Submit';
 	
 	if (req.session.login) {
-		res.redirect("/home");
+		res.redirect('/home');
 		return;
 	}
 	res.render('index', { title: t });
