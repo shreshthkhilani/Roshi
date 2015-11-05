@@ -42,7 +42,9 @@ MongoClient.connect(url, function(err, db) {
 
 //var aws = require("./keyvaluestore.js");
 routes.init(function() {
-	app.get( '/', routes.index );		
+	app.get( '/', routes.index );
+	app.get( '/home', routes.index );
+	app.get( '/login', routes.index );	
 });
 
 http.createServer( app ).listen( app.get( 'port' ), function(){
