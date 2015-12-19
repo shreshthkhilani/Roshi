@@ -1,0 +1,55 @@
+html, body {
+	min-height:100%;
+	height:100%;
+	width: 100%;
+}
+
+#all {
+	height: 100%;
+}
+
+#notFooter {
+	min-height: 94% !important;
+}
+
+#footer {
+	min-height: 6%;
+}
+
+.outsideInput {
+	width: 60%;
+}
+
+.roshiBtn {
+	border-radius: 3px;
+	background-color: #244e5d;
+	border: none;
+	color: #fff;
+	padding-left: 16px;
+	padding-right: 16px;
+	height: 34px;
+}
+
+.roshiBtn:hover {
+	background-color: #2a394f;
+}
+
+.roshiLink {
+	color: #244e5d !important;
+}
+
+.roshiLink:hover {
+	color: #2a394f !important;
+}
+
+.stretchBtn {
+	width: 100% !important;
+}
+
+textarea {
+	max-width: 100%;
+}
+
+#issue {
+	color: #2a394f !important;
+}

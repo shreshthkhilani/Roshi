@@ -1,0 +1,244 @@
+<% layout( 'layout' ) -%>
+
+<script type="text/javascript" src="home.js"></script>
+
+<div class="container" align="center" id="formpanel">
+	<br>
+	<div class="row">
+		<div class="col-xs-6">
+			<button class="roshiBtn stretchBtn saveBtn" type="submit">Save Information</button>
+		</div>
+		<div class="col-xs-6">
+			<button class="roshiBtn stretchBtn uploadBtn" type="submit">Upload Résumé</button>
+		</div>
+	</div>
+	<br>
+
+	<h4>Basic Information</h4>
+	<div class="row">
+		<div class="col-xs-6">
+			<input type="text" class="form-control insideInput" id="firstname" placeholder="First Name" value="<%= firstname %>">
+		</div>
+		<div class="col-xs-6">
+			<input type="text" class="form-control insideInput" id="lastname" placeholder="Last Name" value="<%= lastname %>">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-6">
+			<input type="text" class="form-control insideInput" id="college" placeholder="School" value="University of Pennsylvania" disabled>
+		</div>
+		<div class="col-xs-6">
+			<input type="text" class="form-control insideInput" id="email" placeholder="Email" value="<%= email %>" disabled>
+		</div>
+	</div>
+	<br>
+
+	<h4>GPA and Expected Graduation</h4>
+	<div class="row">
+		<div class="col-xs-6">
+			<% if (gpa === 0) { %>
+				<input type="number" min="0.00" max="4.00" step="0.01" class="form-control insideInput" id="gpa" placeholder="GPA">
+			<% } else { %>
+				<input type="number" min="0.00" max="4.00" step="0.01" class="form-control insideInput" id="gpa" placeholder="GPA" value="<%= gpa %>">
+			<% } %>
+		</div>
+		<div id="classDiv" hidden><%= year %></div>
+		<div class="col-xs-6">
+			<select class="form-control" id="year">
+				<option value="" disabled selected>Graduation Year</option>
+			  <option value="2015">2015</option>
+			  <option value="2016">2016</option>
+			  <option value="2017">2017</option>
+			  <option value="2018">2018</option>
+			  <option value="2019">2019</option>
+			  <option value="2020">2020</option>
+			</select>
+		</div>
+	</div>
+	<br>
+
+	<h4>School(s), Major(s), and Minor(s)</h4>
+	<div class="row">
+		<div class="col-xs-6">
+			<select class="form-control" id="school1">
+				<option value="" disabled selected>Primary School</option>
+			  <option value="wharton">Wharton</option>
+			  <option value="seas">Engineering</option>
+			  <option value="sas">College</option>
+			  <option value="nursing">Nursing</option>
+			</select>
+		</div>
+		<div class="col-xs-6">
+			<select class="form-control" id="school2">
+				<option value="" disabled selected>Secondary School</option>
+				<option>None</option>
+			  <option value="wharton">Wharton</option>
+			  <option value="seas">Engineering</option>
+			  <option value="sas">College</option>
+			  <option value="nursing">Nursing</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="major1" placeholder="Major or Concentration">
+		</div>
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="major2" placeholder="Major or Concentration">
+		</div>
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="major3" placeholder="Major or Concentration">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="minor1" placeholder="Minor">
+		</div>
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="minor2" placeholder="Minor">
+		</div>
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="minor3" placeholder="Minor">
+		</div>
+	</div>
+	<br>
+
+	<h4>Work Experience</h4>
+	<div class="row">
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" value="Summer 2015" disabled>
+		</div>
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="company1" placeholder="Company Name">
+		</div>
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="position1" placeholder="Position">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" value="Summer 2014" disabled>
+		</div>
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="company2" placeholder="Company Name">
+		</div>
+		<div class="col-xs-4">
+			<input type="text" class="form-control insideInput" id="position2" placeholder="Position">
+		</div>
+	</div>
+	<br>
+<!-- 	<div class="row">
+		<div class="col-xs-4">
+		</div>
+		<div class="col-xs-4">
+			<button class="roshiBtn stretchBtn uploadBtn" type="submit">Add</button>
+		</div>
+		<div class="col-xs-4">
+		</div>
+	</div>
+	<br> -->
+
+	<h4>Clubs and Organizations</h4>
+	<div class="row">
+		<div class="col-xs-6">
+			<input type="text" class="form-control insideInput" id="club1" placeholder="Club or Organization Name">
+		</div>
+		<div class="col-xs-6">
+			<input type="text" class="form-control insideInput" id="clubposition1" placeholder="Position">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-6">
+			<input type="text" class="form-control insideInput" id="club2" placeholder="Club or Organization Name">
+		</div>
+		<div class="col-xs-6">
+			<input type="text" class="form-control insideInput" id="clubposition2" placeholder="Position">
+		</div>
+	</div>
+	<br>
+<!-- 	<div class="row">
+		<div class="col-xs-4">
+		</div>
+		<div class="col-xs-4">
+			<button class="roshiBtn stretchBtn uploadBtn" type="submit">Add</button>
+		</div>
+		<div class="col-xs-4">
+		</div>
+	</div>
+	<br> -->
+
+	<h4>Personal Projects</h4>
+	<div class="row">
+		<div class="col-xs-12">
+			<textarea class="form-control" rows="3" id="projects"><%= projects %></textarea>
+		</div>
+	</div>
+	<br>
+
+	<h4>Interesting Classes</h4>
+	<div class="row">
+		<div class="col-xs-3">
+			<input type="text" class="form-control insideInput" id="class1" placeholder="Class Code">
+		</div>
+		<div class="col-xs-3">
+			<input type="text" class="form-control insideInput" id="class2" placeholder="Class Code">
+		</div>
+		<div class="col-xs-3">
+			<input type="text" class="form-control insideInput" id="class3" placeholder="Class Code">
+		</div>
+		<div class="col-xs-3">
+			<input type="text" class="form-control insideInput" id="class4" placeholder="Class Code">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-3">
+			<input type="text" class="form-control insideInput" id="class5" placeholder="Class Code">
+		</div>
+		<div class="col-xs-3">
+			<input type="text" class="form-control insideInput" id="class6" placeholder="Class Code">
+		</div>
+		<div class="col-xs-3">
+			<input type="text" class="form-control insideInput" id="class7" placeholder="Class Code">
+		</div>
+		<div class="col-xs-3">
+			<input type="text" class="form-control insideInput" id="class8" placeholder="Class Code">
+		</div>
+	</div>
+	<!-- <div class="row">
+		<div class="col-xs-4">
+		</div>
+		<div class="col-xs-4">
+			<button class="roshiBtn stretchBtn uploadBtn" type="submit">Add</button>
+		</div>
+		<div class="col-xs-4">
+		</div>
+	</div> -->
+	<br><br>
+
+	<div class="row">
+		<div class="col-xs-6">
+			<button class="roshiBtn stretchBtn saveBtn" type="submit">Save Information</button>
+		</div>
+		<div class="col-xs-6">
+			<button class="roshiBtn stretchBtn uploadBtn" type="submit">Upload Résumé</button>
+		</div>
+	</div>
+	<form role="form" action="/uploadResume" method="post" enctype="multipart/form-data" onerror="window.location='/home'" id="photoForm">
+		<input type="file" id="fileInput" name="photo" accept="application/pdf">
+		<input class="btn btn-default" type="submit" value="Submit" id="submitPhotoBtn">
+	</form>
+	<br><br>
+
+	<% if (resume !== '') { %>
+		<h4>Résumé</h4>
+		<iframe src="<%= resume %>" style="width:80%; height:700px;" frameborder="0"></iframe>
+		<br><br>
+	<% } %>
+
+</div>

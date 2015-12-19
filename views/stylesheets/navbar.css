@@ -1,0 +1,12 @@
+.navbaritem {
+	text-decoration: none;
+	color: black;
+}
+
+.navbaritem:hover {
+
+}
+
+.activenavbaritem {
+	text-decoration: underline;
+}

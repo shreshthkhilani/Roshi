@@ -21,7 +21,7 @@ exports.init = function(callback) {
 async = require('async');
 
 exports.index = function(req, res) {
-	var t = 'Submit';
+	var t = 'Roshi';
 	
 	if (req.session.login) {
 		res.redirect('/home');

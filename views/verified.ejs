@@ -1,0 +1,12 @@
+<% layout( 'layout' ) -%>
+
+<div class="container" align="center">
+	<br>
+	Your account has been verified! 
+	<br><br>
+	<% if (!login) { %>
+		<a class="roshiLink" href="/login">Login to your account</a>
+	<% } else { %>
+		<a class="roshiLink" href="/home">Go Home</a>
+	<% } %>
+</div>

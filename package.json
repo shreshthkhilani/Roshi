@@ -33,7 +33,13 @@
     "s3": "*",
     "request": "*",
     "nodemon": "*",
-    "mongodb": "*"
+    "mongodb": "*",
+    "mysql": "*",
+    "multer-s3": "*",
+    "dynamodb": "*",
+    "dateformat": "*",
+    "bcrypt": "*",
+    "nodemailer": "*"
   },
   "author": "",
   "license": "",

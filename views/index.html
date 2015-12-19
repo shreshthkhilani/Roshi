@@ -13,14 +13,14 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="/general.css">
-	<link rel="shortcut icon" href="/R.png">
+	<link rel="stylesheet" type="text/css" href="stylesheets/general.css">
+	<link rel="shortcut icon" href="images/R.png">
 </head>
 <body>
 	<div id="all">
 		<div id="notFooter">
 			<div class="container" id="header" align="center">
-				<a href="/"><img src="/Roshi.png" style="height:42px; margin-top: 16px;"></a>
+				<img src="images/Roshi.png" style="height:42px; margin-top: 16px;">
 				<h3>
 					<small><i>noun. </i>The spiritual leader of a community of Zen Buddhist monks.</small>
 				</h3>
@@ -28,6 +28,9 @@
 			<%- body %>
 		</div>
 		<% include footer %>
+		<div id="footer" class="container" align="center">
+			<a href="/login" class="roshiLink">Login to your existing account</a>
+		</div>
 	</div>
 </body>
 </html>

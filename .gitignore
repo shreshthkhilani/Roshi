@@ -26,3 +26,4 @@ _testmain.go
 .DS_Store
 
 node_modules
+json
