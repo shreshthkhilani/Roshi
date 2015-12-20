@@ -409,6 +409,21 @@ app.post('/uploadResume', function (req, res) {
 app.post('/editProfile', function (req, res) {
 	var email = req.session.email;
 	var profile = req.body;
+	if (profile['school'] === undefined) {
+		profile['school'] = [];
+	}
+	if (profile['major'] === undefined) {
+		profile['major'] = [];
+	}
+	if (profile['minor'] === undefined) {
+		profile['minor'] = [];
+	}
+	if (profile['clubs'] === undefined) {
+		profile['clubs'] = [];
+	}
+	if (profile['classes'] === undefined) {
+		profile['classes'] = [];
+	}
 	console.log(profile);
 	ddb.getItem('users', email, null, {}, function (err1, res1, cap1) {
 		if (err1) {
