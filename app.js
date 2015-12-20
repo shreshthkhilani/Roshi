@@ -409,6 +409,7 @@ app.post('/uploadResume', function (req, res) {
 app.post('/editProfile', function (req, res) {
 	var email = req.session.email;
 	var profile = req.body;
+	console.log(profile);
 	ddb.getItem('users', email, null, {}, function (err1, res1, cap1) {
 		if (err1) {
 			console.log('/editProfile: Get Item');
@@ -421,7 +422,13 @@ app.post('/editProfile', function (req, res) {
 		value.lastname = profile.lastname;
 		value.gpa = profile.gpa;
 		value.year = profile.year;
+		value.school = profile.school;
+		value.major = profile.major;
+		value.minor = profile.minor;
+		value.work = profile.work;
+		value.clubs = profile.clubs;
 		value.projects = profile.projects;
+		value['classes'] = profile['classes'];
 		// TODO: for rest of items
 		ddb.updateItem('users', email, null, {'value': {value: JSON.stringify(value)}}, {}, function (err2, res2, cap2) {
 			if (err2) {
