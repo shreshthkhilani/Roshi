@@ -14,10 +14,14 @@ $( document ).ready(function () {
   var school0 = $('#school0Div').html();
 	if (school0 !== 'undefined') {
 		$('#school0').val(school0);
+	} else {
+		$('#school0').val('');
 	}
 	var school1 = $('#school1Div').html();
 	if (school1 !== 'undefined') {
 		$('#school1').val(school1);
+	} else {
+		$('#school1').val('');
 	}
 
 	$('.saveBtn').click(function () {
