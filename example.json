@@ -1,0 +1,33 @@
+{
+	"email": "email",
+	"password": "hash",
+	"isVerified": false,
+	"verifyid": "verifyid",
+	"verifyurl": "verifyurl",
+	"resume": "blahblahurlblah",
+  "firstname": "Mader",
+  "lastname": "Chod",
+  "gpa": 0,
+  "year": 0,
+  "school": ["seas","wharton"],
+  "major": ["Computer Science", "Finance"],
+  "minor": ["Penis Sucking"],
+  "work": {
+		"summer2015": {
+			"company": "Goldpenis Ballsacks",
+			"position": "Lundanalyst"
+		},
+		"summer2014": {
+			"company": "",
+			"position": ""
+		}
+	},
+  "clubs": [
+  	{
+  		"group": "WITG",
+  		"position": "chair"
+  	}
+  ],
+  "projects": "Tasty penis",
+  "classes": ["FNCE101","CIS110"]
+}

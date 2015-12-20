@@ -61,7 +61,8 @@
 	<h4>School(s), Major(s), and Minor(s)</h4>
 	<div class="row">
 		<div class="col-xs-6">
-			<select class="form-control" id="school1">
+			<div id="school0Div" hidden><%= school[0] %></div>
+			<select class="form-control" id="school0">
 				<option value="" disabled selected>Primary School</option>
 			  <option value="wharton">Wharton</option>
 			  <option value="seas">Engineering</option>
@@ -70,7 +71,8 @@
 			</select>
 		</div>
 		<div class="col-xs-6">
-			<select class="form-control" id="school2">
+			<div id="school1Div" hidden><%= school[1] %></div>
+			<select class="form-control" id="school1">
 				<option value="" disabled selected>Secondary School</option>
 				<option>None</option>
 			  <option value="wharton">Wharton</option>
@@ -83,25 +85,25 @@
 	<br>
 	<div class="row">
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="major1" placeholder="Major or Concentration">
+			<input type="text" class="form-control insideInput" id="major1" placeholder="Major or Concentration" <% if (major[0]) { %>value="<%= major[0] %>"<% } %>>
 		</div>
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="major2" placeholder="Major or Concentration">
+			<input type="text" class="form-control insideInput" id="major2" placeholder="Major or Concentration" <% if (major[1]) { %>value="<%= major[1] %>"<% } %>>
 		</div>
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="major3" placeholder="Major or Concentration">
+			<input type="text" class="form-control insideInput" id="major3" placeholder="Major or Concentration" <% if (major[2]) { %>value="<%= major[2] %>"<% } %>>
 		</div>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="minor1" placeholder="Minor">
+			<input type="text" class="form-control insideInput" id="minor1" placeholder="Minor" <% if (minor[0]) { %>value="<%= minor[0] %>"<% } %>>
 		</div>
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="minor2" placeholder="Minor">
+			<input type="text" class="form-control insideInput" id="minor2" placeholder="Minor" <% if (minor[1]) { %>value="<%= minor[1] %>"<% } %>>
 		</div>
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="minor3" placeholder="Minor">
+			<input type="text" class="form-control insideInput" id="minor3" placeholder="Minor" <% if (minor[2]) { %>value="<%= minor[2] %>"<% } %>>
 		</div>
 	</div>
 	<br>
@@ -112,10 +114,10 @@
 			<input type="text" class="form-control insideInput" value="Summer 2015" disabled>
 		</div>
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="company1" placeholder="Company Name">
+			<input type="text" class="form-control insideInput" id="company1" placeholder="Company Name" <% if (work.summer2015.company) {%>value="<%= work.summer2015.company %>"<% } %>>
 		</div>
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="position1" placeholder="Position">
+			<input type="text" class="form-control insideInput" id="position1" placeholder="Position" <% if (work.summer2015.position) {%>value="<%= work.summer2015.position %>"<% } %>>
 		</div>
 	</div>
 	<br>
@@ -124,10 +126,10 @@
 			<input type="text" class="form-control insideInput" value="Summer 2014" disabled>
 		</div>
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="company2" placeholder="Company Name">
+			<input type="text" class="form-control insideInput" id="company2" placeholder="Company Name" <% if (work.summer2014.company) {%>value="<%= work.summer2014.company %>"<% } %>>
 		</div>
 		<div class="col-xs-4">
-			<input type="text" class="form-control insideInput" id="position2" placeholder="Position">
+			<input type="text" class="form-control insideInput" id="position2" placeholder="Position" <% if (work.summer2014.position) {%>value="<%= work.summer2014.position %>"<% } %>>
 		</div>
 	</div>
 	<br>
@@ -145,19 +147,19 @@
 	<h4>Clubs and Organizations</h4>
 	<div class="row">
 		<div class="col-xs-6">
-			<input type="text" class="form-control insideInput" id="club1" placeholder="Club or Organization Name">
+			<input type="text" class="form-control insideInput" id="club1" placeholder="Club or Organization Name" <% if (clubs[0]) {%>value="<%= clubs[0].group %>"<% } %>>
 		</div>
 		<div class="col-xs-6">
-			<input type="text" class="form-control insideInput" id="clubposition1" placeholder="Position">
+			<input type="text" class="form-control insideInput" id="clubposition1" placeholder="Position" <% if (clubs[0]) {%>value="<%= clubs[0].position %>"<% } %>>
 		</div>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-xs-6">
-			<input type="text" class="form-control insideInput" id="club2" placeholder="Club or Organization Name">
+			<input type="text" class="form-control insideInput" id="club2" placeholder="Club or Organization Name" <% if (clubs[1]) {%>value="<%= clubs[1].group %>"<% } %>>
 		</div>
 		<div class="col-xs-6">
-			<input type="text" class="form-control insideInput" id="clubposition2" placeholder="Position">
+			<input type="text" class="form-control insideInput" id="clubposition2" placeholder="Position" <% if (clubs[1]) {%>value="<%= clubs[1].position %>"<% } %>>
 		</div>
 	</div>
 	<br>
@@ -183,31 +185,31 @@
 	<h4>Interesting Classes</h4>
 	<div class="row">
 		<div class="col-xs-3">
-			<input type="text" class="form-control insideInput" id="class1" placeholder="Class Code">
+			<input type="text" class="form-control insideInput" id="class1" placeholder="Class Code" <% if (classes[0]) {%>value="<%= classes[0] %>"<% } %>>
 		</div>
 		<div class="col-xs-3">
-			<input type="text" class="form-control insideInput" id="class2" placeholder="Class Code">
+			<input type="text" class="form-control insideInput" id="class2" placeholder="Class Code" <% if (classes[1]) {%>value="<%= classes[1] %>"<% } %>>
 		</div>
 		<div class="col-xs-3">
-			<input type="text" class="form-control insideInput" id="class3" placeholder="Class Code">
+			<input type="text" class="form-control insideInput" id="class3" placeholder="Class Code" <% if (classes[2]) {%>value="<%= classes[2] %>"<% } %>>
 		</div>
 		<div class="col-xs-3">
-			<input type="text" class="form-control insideInput" id="class4" placeholder="Class Code">
+			<input type="text" class="form-control insideInput" id="class4" placeholder="Class Code" <% if (classes[3]) {%>value="<%= classes[3] %>"<% } %>>
 		</div>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-xs-3">
-			<input type="text" class="form-control insideInput" id="class5" placeholder="Class Code">
+			<input type="text" class="form-control insideInput" id="class5" placeholder="Class Code" <% if (classes[4]) {%>value="<%= classes[4] %>"<% } %>>
 		</div>
 		<div class="col-xs-3">
-			<input type="text" class="form-control insideInput" id="class6" placeholder="Class Code">
+			<input type="text" class="form-control insideInput" id="class6" placeholder="Class Code" <% if (classes[5]) {%>value="<%= classes[5] %>"<% } %>>
 		</div>
 		<div class="col-xs-3">
-			<input type="text" class="form-control insideInput" id="class7" placeholder="Class Code">
+			<input type="text" class="form-control insideInput" id="class7" placeholder="Class Code" <% if (classes[6]) {%>value="<%= classes[6] %>"<% } %>>
 		</div>
 		<div class="col-xs-3">
-			<input type="text" class="form-control insideInput" id="class8" placeholder="Class Code">
+			<input type="text" class="form-control insideInput" id="class8" placeholder="Class Code" <% if (classes[7]) {%>value="<%= classes[7] %>"<% } %>>
 		</div>
 	</div>
 	<!-- <div class="row">
