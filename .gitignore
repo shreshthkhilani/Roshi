@@ -28,3 +28,5 @@ _testmain.go
 node_modules
 json
 uploads
+
+*.pyc
