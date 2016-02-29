@@ -25,6 +25,9 @@
 					<small><i>noun. </i>The spiritual leader of a community of Zen Buddhist monks.</small>
 				</h3>
 			</div>
+			<% if (login) { %>
+				<% include navbar %>
+			<% } %>
 			<%- body %>
 		</div>
 		<% include footer %>

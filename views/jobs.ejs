@@ -1,0 +1,43 @@
+<% layout( 'layout' ) -%>
+
+<script type="text/javascript" src="jobs.js"></script>
+
+<div class="container">
+	<br>
+	<p>
+		Browse through this list of jobs and mark off jobs you're interested in. When you wish to view more jobs, click on the button at the bottom of the page and we'll list more jobs we think you'll be interested in. The more you use the site, the smarter our algorithm will get! 
+	</p>
+	<br>
+	<% for (var i = 0; i < joblist.length; i++) { %>
+		<div class="jobbox">
+			<div class="row">
+				<div class="col-md-10 col-xs-8">
+					<div class="row">
+						<div class="col-xs-2" align="right">
+							<% if (joblist[i].image === '') { %>
+								<img src="https://static.hydroottawa.com/images/home/bank.png" style="height: 60px; margin-top: 12px;">
+							<% } else { %>
+								<img src="<%= joblist[i].image %>" style="height: 60px; margin-top: 12px;">
+							<% } %>
+						</div>
+						<div class="col-xs-10">
+							<h4><%= joblist[i].position %></h4>
+							<h5><%= joblist[i].company %> ・ <%= joblist[i].location %> ・ <%= joblist[i].type %></h5>
+							<p style="display: inline-block;"><%= joblist[i].desc %></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 col-xs-4">
+					<button class="roshiBtn2 stretchBtn" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="margin-right: 10px;"></span>Interested</button>
+				</div>
+			</div>
+		</div>
+		<br>
+	<% } %>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<button class="roshiBtn stretchBtn" type="submit">Re-calculate Job Recommendations</button>
+		</div>
+	</div>
+	<br>
+</div>

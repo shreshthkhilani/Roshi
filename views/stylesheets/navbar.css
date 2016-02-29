@@ -10,3 +10,28 @@
 .activenavbaritem {
 	text-decoration: underline;
 }
+
+.navitem:hover {
+	text-decoration: none !important;
+}
+
+.navitem > div {
+	color: #244e5d;
+	border-radius: 3px;
+	background-color: #fff;
+	border-color: #244e5d !important;
+	border: 1px solid !important;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.navitem > div:hover {
+	color: #fff !important;
+	background-color: #2a394f !important;
+	text-decoration: none !important;
+}
+
+.activenavitem > div {
+	color: #fff !important;
+	background-color: #2a394f !important;
+}

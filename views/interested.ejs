@@ -1,0 +1,35 @@
+<% layout( 'layout' ) -%>
+
+<div class="container">
+	<br>
+	<p>
+		Here's a list of jobs you've expressed interest in. Feel free to apply to these jobs or unmark them to remove them from this list.
+	</p>
+	<br>
+	<% for (var i = 0; i < joblist.length; i++) { %>
+		<div class="jobbox">
+			<div class="row">
+				<div class="col-md-10 col-xs-8">
+					<div class="row">
+						<div class="col-xs-2" align="right">
+							<% if (joblist[i].image === '') { %>
+								<img src="https://static.hydroottawa.com/images/home/bank.png" style="height: 60px; margin-top: 12px;">
+							<% } else { %>
+								<img src="<%= joblist[i].image %>" style="height: 60px; margin-top: 12px;">
+							<% } %>
+						</div>
+						<div class="col-xs-10">
+							<h4><%= joblist[i].position %></h4>
+							<h5><%= joblist[i].company %> ・ <%= joblist[i].location %> ・ <%= joblist[i].type %></h5>
+							<p style="display: inline-block;"><%= joblist[i].desc %></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 col-xs-4">
+					<button class="roshiBtn2 stretchBtn interestedBtn" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="margin-right: 10px;"></span>Interested</button>
+				</div>
+			</div>
+		</div>
+		<br>
+	<% } %>
+</div>

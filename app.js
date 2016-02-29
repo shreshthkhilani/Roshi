@@ -74,6 +74,21 @@ var ddb = require('dynamodb').ddb({
 /////////////////
 
 app.get('/', function (req, res) {
+	if (req.session.login) {
+    res.redirect('/home');
+    return;
+  }
+
+  var t = 'Roshi';
+  res.render('login', { 
+    title: t,
+    login: false,
+    signin: true,
+    signup: false
+  });
+});
+
+app.get('/signup', function (req, res) {
   if (req.session.login) {
     res.redirect('/home');
     return;
@@ -85,21 +100,6 @@ app.get('/', function (req, res) {
     login: false,
     signin: false,
     signup: true
-  });
-});
-
-app.get('/login', function (req, res) {
-  if (req.session.login) {
-    res.redirect('/home');
-    return;
-  }
-
-  var t = 'Roshi';
-  res.render('login', { 
-    title: t,
-    login: false,
-    signin: true,
-    signup: false
   });
 });
 
@@ -246,22 +246,46 @@ app.post('/create', function (req, res) {
 									res.send({success: true, msg: 'Verification Incomplete!'});
 									return;
 								} else {
-									var emailhtml = 'Click this link to complete verification:\n' + verifyurl;
-									var mailOptions = {
-		    						from: 'Roshi Recruiting <' + emailObj.user + '>',
-		    						to: email,
-		    						subject: '[Roshi] Verify Email Address', 
-		    						text: emailhtml
+									recommendedItem = {
+										email: email,
+										value: JSON.stringify({rlist: []})
 									};
-									transporter.sendMail(mailOptions, function (err4, info) {
-										if (err4) {
-											console.log('/create: Send Mail');
-											console.log(err4);
-											res.send({success: true, msg: 'Mail not sent!'});
-											return;
+									ddb.putItem('recommended', recommendedItem, {}, function (err6, res6, cap6) {
+										if (err6) {
+											console.log('/create: Put Item (recommended)');
+											console.log(err6);
+											res.send({success: true, msg: 'Error with DB, mail not sent!'});
 										} else {
-											res.send({success: true, msg: 'Welcome!'});
-											return;
+											interestedItem = {
+												email: email,
+												value: JSON.stringify({ilist: []})
+											};
+											ddb.putItem('interested', interestedItem, {}, function (err7, res7, cap7) {
+												if (err7) {
+													console.log('/create: Put Item (interested)');
+													console.log(err7);
+													res.send({success: true, msg: 'Error with DB, mail not sent!'});
+												} else {
+													var emailhtml = 'Click this link to complete verification:\n' + verifyurl;
+													var mailOptions = {
+						    						from: 'Roshi Recruiting <' + emailObj.user + '>',
+						    						to: email,
+						    						subject: '[Roshi] Verify Email Address', 
+						    						text: emailhtml
+													};
+													transporter.sendMail(mailOptions, function (err4, info) {
+														if (err4) {
+															console.log('/create: Send Mail');
+															console.log(err4);
+															res.send({success: true, msg: 'Mail not sent!'});
+															return;
+														} else {
+															res.send({success: true, msg: 'Welcome!'});
+															return;
+														}
+													});
+												}
+											});
 										}
 									});
 								}
@@ -480,6 +504,8 @@ app.get('/verify', function (req,res) {
 
 app.get('/verified', function (req,res) {
 	var t = 'Roshi';
+	req.session.login = false;
+  req.session.username = undefined;
   res.render('verified', { 
     title: t,
     login: req.session.login,
@@ -507,7 +533,7 @@ app.get('/home', function (req, res) {
 		} else {
 			var value = JSON.parse(res1.value);
 
-			var t = 'Home';
+			var t = 'Profile';
 		  res.render('home', { 
 		    title: t,
 		    login: true,
@@ -581,6 +607,106 @@ var uploadToS3 = function (file, callback) {
     callback(image_url);
   });
 };
+
+app.get('/jobs', function (req, res) {
+  if (!req.session.login) {
+    res.redirect('/');
+    return;
+  }
+
+  if (!req.session.isVerified) {
+  	res.redirect('/verify');
+  	return;
+  }
+
+  var email = req.session.email;
+	ddb.getItem('recommended', email, null, {}, function (err1, res1, cap1) {
+		if (err1) {
+			console.log('/jobs: Get Item');
+			console.log(err1);
+		} else {
+			var value = JSON.parse(res1.value);
+			var joblist = [];
+			var getJobData = function (it, callback) {
+				ddb.getItem('jobs', it, null, {}, function (err3, res3, cap3) {
+					if (err3) {
+						console.log('/jobs: Get Item 2');
+						console.log(err3);
+					} else {
+						var value = JSON.parse(res3.value);
+						joblist.push(value);
+						callback();
+					}
+				});
+			};
+			async.each(value.rlist, getJobData, function (err2) {
+				if (err2) {
+					console.log('/jobs: Async.each');
+					console.log(err2);
+				} else {
+					var t = 'Jobs';
+				  res.render('jobs', { 
+				    title: t,
+				    login: true,
+				    signin: false,
+				    signup: false,
+				    joblist: joblist
+				  });
+				}
+			});
+		}
+	});
+});
+
+app.get('/interested', function (req, res) {
+  if (!req.session.login) {
+    res.redirect('/');
+    return;
+  }
+
+  if (!req.session.isVerified) {
+  	res.redirect('/verify');
+  	return;
+  }
+
+  var email = req.session.email;
+	ddb.getItem('interested', email, null, {}, function (err1, res1, cap1) {
+		if (err1) {
+			console.log('/interested: Get Item');
+			console.log(err1);
+		} else {
+			var value = JSON.parse(res1.value);
+			var joblist = [];
+			var getJobData = function (it, callback) {
+				ddb.getItem('jobs', it, null, {}, function (err3, res3, cap3) {
+					if (err3) {
+						console.log('/interested: Get Item 2');
+						console.log(err3);
+					} else {
+						var value = JSON.parse(res3.value);
+						joblist.push(value);
+						callback();
+					}
+				});
+			};
+			async.each(value.rlist, getJobData, function (err2) {
+				if (err2) {
+					console.log('/interested: Async.each');
+					console.log(err2);
+				} else {
+					var t = 'Interested';
+				  res.render('interested', { 
+				    title: t,
+				    login: true,
+				    signin: false,
+				    signup: false,
+				    joblist: joblist
+				  });
+				}
+			});
+		}
+	});
+});
 
 /////////////////
 
