@@ -73,6 +73,11 @@ var ddb = require('dynamodb').ddb({
 
 /////////////////
 
+app.get('/login', function (req, res) {
+	res.redirect('/');
+  return;
+});
+
 app.get('/', function (req, res) {
 	if (req.session.login) {
     res.redirect('/home');
