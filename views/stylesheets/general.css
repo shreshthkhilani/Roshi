@@ -51,8 +51,19 @@ html, body {
 }
 
 .interestedBtn {
-	background-color: #2a394f !important;
-	color: #fff !important;
+	border-radius: 3px;
+	background-color: #2a394f;
+	border: 1px solid;
+	border-color: #2a394f !important;
+	color: #fff;
+	padding-left: 16px;
+	padding-right: 16px;
+	height: 34px;
+}
+
+.interestedBtn:hover {
+	background-color: #fff !important;
+	color: #2a394f !important;
 }
 
 .roshiLink {

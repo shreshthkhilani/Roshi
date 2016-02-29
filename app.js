@@ -650,11 +650,13 @@ app.get('/jobs', function (req, res) {
 							}
 						});
 					};
-					// value1.rlist - value4.ilist
+					// residual = value1.rlist - value4.ilist
+					// create object with values of ilist as keys
 					idict = {};
 					for (var k = 0; k < value4.ilist.length; k++) {
 						idict[value4.ilist[k]] = 1;
 					}
+					// add to residual only if rlist value is not in idict
 					residual = [];
 					for (var k = 0; k < value1.rlist.length; k++) {
 						var rval = value1.rlist[k];
@@ -729,6 +731,46 @@ app.get('/interested', function (req, res) {
 				    signup: false,
 				    joblist: joblist
 				  });
+				}
+			});
+		}
+	});
+});
+
+app.post('/changeInterest', function (req, res) {
+	var email = req.session.email;
+	var jobId = parseInt(req.body.jobId);
+	var isInterested = parseInt(req.body.isInterested);
+
+	ddb.getItem('interested', email, null, {}, function (err1, res1, cap1) {
+		if (err1) {
+			console.log('/changeInterest: Get Item');
+			console.log(err1);
+			res.send({success: false});
+		} else {
+			var value1 = JSON.parse(res1.value);
+			var ilist = [];
+			for (var k = 0; k < value1.ilist.length; k++) {
+				var currJobId = value1.ilist[k];
+				if (jobId === currJobId) {
+					continue;
+				} else {
+					ilist.push(currJobId);
+				}
+			}
+			if (isInterested === 1) {
+				ilist.push(jobId);
+			}
+			updVal = {
+				ilist: ilist
+			};
+			ddb.updateItem('interested', email, null, {'value': {value: JSON.stringify(updVal)}}, {}, function (err2, res2, cap2) {
+				if (err2) {
+					console.log('/changeInterest: Update Item');
+					console.log(err2);
+					res.send({success: false});
+				} else {
+					res.send({success: true});
 				}
 			});
 		}

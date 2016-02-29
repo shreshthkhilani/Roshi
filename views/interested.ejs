@@ -1,5 +1,7 @@
 <% layout( 'layout' ) -%>
 
+<script type="text/javascript" src="interest.js"></script>
+
 <div class="container">
 	<br>
 	<p>
@@ -26,7 +28,7 @@
 					</div>
 				</div>
 				<div class="col-md-2 col-xs-4">
-					<button class="roshiBtn2 stretchBtn interestedBtn" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="margin-right: 10px;"></span>Interested</button>
+					<button class="interestedBtn stretchBtn iFB" id="id<%= joblist[i].id %>" type="submit"><span class="glyphicon glyphicon-ok checkmark" aria-hidden="true" style="margin-right: 10px;"></span>Interested</button>
 				</div>
 			</div>
 		</div>
