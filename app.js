@@ -630,33 +630,55 @@ app.get('/jobs', function (req, res) {
 			console.log('/jobs: Get Item');
 			console.log(err1);
 		} else {
-			var value = JSON.parse(res1.value);
-			var joblist = [];
-			var getJobData = function (it, callback) {
-				ddb.getItem('jobs', it, null, {}, function (err3, res3, cap3) {
-					if (err3) {
-						console.log('/jobs: Get Item 2');
-						console.log(err3);
-					} else {
-						var value = JSON.parse(res3.value);
-						joblist.push(value);
-						callback();
-					}
-				});
-			};
-			async.each(value.rlist, getJobData, function (err2) {
-				if (err2) {
-					console.log('/jobs: Async.each');
-					console.log(err2);
+			var value1 = JSON.parse(res1.value);
+			ddb.getItem('interested', email, null, {}, function (err4, res4, cap4) {
+				if (err4) {
+					console.log('/jobs: Get Item (interested)');
+					console.log(err4);
 				} else {
-					var t = 'Jobs';
-				  res.render('jobs', { 
-				    title: t,
-				    login: true,
-				    signin: false,
-				    signup: false,
-				    joblist: joblist
-				  });
+					var value4 = JSON.parse(res4.value);
+					var joblist = [];
+					var getJobData = function (it, callback) {
+						ddb.getItem('jobs', it, null, {}, function (err3, res3, cap3) {
+							if (err3) {
+								console.log('/jobs: Get Item 2');
+								console.log(err3);
+							} else {
+								var value3 = JSON.parse(res3.value);
+								joblist.push(value3);
+								callback();
+							}
+						});
+					};
+					// value1.rlist - value4.ilist
+					idict = {};
+					for (var k = 0; k < value4.ilist.length; k++) {
+						idict[value4.ilist[k]] = 1;
+					}
+					residual = [];
+					for (var k = 0; k < value1.rlist.length; k++) {
+						var rval = value1.rlist[k];
+						if (rval in idict) {
+							continue;
+						} else {
+							residual.push(rval);
+						}
+					}
+					async.each(residual, getJobData, function (err2) {
+						if (err2) {
+							console.log('/jobs: Async.each');
+							console.log(err2);
+						} else {
+							var t = 'Jobs';
+						  res.render('jobs', { 
+						    title: t,
+						    login: true,
+						    signin: false,
+						    signup: false,
+						    joblist: joblist
+						  });
+						}
+					});
 				}
 			});
 		}
@@ -694,7 +716,7 @@ app.get('/interested', function (req, res) {
 					}
 				});
 			};
-			async.each(value.rlist, getJobData, function (err2) {
+			async.each(value.ilist, getJobData, function (err2) {
 				if (err2) {
 					console.log('/interested: Async.each');
 					console.log(err2);
