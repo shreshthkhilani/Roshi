@@ -35,3 +35,15 @@ def get_interested (key):
 	table = dynamodb.Table('interested')
 	response = table.get_item(Key={'email':key})
 	return response['Item']
+
+# Get interests given email
+# Usage:
+# "ddb.get_jobs_list([1,3,5,12])"
+# No error checking
+def get_jobs_list(keys):
+	table = dynamodb.Table('jobs')
+	job_list = []
+	for i in keys:
+		response = table.get_item(Key={'id':i})
+		job_list.append(response['Item'])
+	return job_list
