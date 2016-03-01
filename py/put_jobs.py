@@ -19,14 +19,20 @@ def put_jobs(table_name, data):
 	table = dynamodb.Table(table_name)
 	with table.batch_writer() as batch:
 		for val in data:
-			batch.put_item(
-	            	data[val]["id"]=data[val]
-	        )
-	        print("Inserted value %s"%data[val]["id"])
+			temp = {}
+			temp["id"] = val
+			temp["value"] = "Hello %s"%val #str(data[val])
+			try:
+				batch.put_item(Item=temp)
+				print("Inserted value %s"%val)
+			except:
+				print("Failed ID: %s"%val)
 	#table = dynamodb.Table('users')
 	#response = table.get_item(Key={'email':key})
 	#return response['Item']
 
-with open('position_data.json') as data_file:
+with open('Roshi/position_data.json') as data_file:
 	data = json.load(data_file)
 put_jobs("jobs", data);
+
+# {"id":0,"value":}
