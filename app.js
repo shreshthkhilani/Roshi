@@ -1,4 +1,4 @@
-var appurl = 'http://ec2-52-91-67-156.compute-1.amazonaws.com/';
+var appurl = 'http://ec2-52-91-67-156.compute-1.amazonaws.com';
 
 var express = require('express');
 var app = express();
