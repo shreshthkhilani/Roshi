@@ -105,7 +105,7 @@ def populate_initial_recco(email, jobs):
 	table.put_item(Item=db_map)
 
 
-with open('../position_data.json') as data_file:
+with open('/home/ubuntu/Roshi/py/position_data.json') as data_file:
 	data = json.load(data_file)
 
 make_recommendations(sys.argv[1], data)
