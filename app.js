@@ -280,7 +280,7 @@ app.post('/create', function (req, res) {
 													PythonShell.run('py/make_recco.py', options, function (err8, results) {
 													  if (err8) {
 													  	console.log('/create: Python Shell');
-														console.log(err8);
+															console.log(err8);
 													  } else {
 													  	// results is an array consisting of messages collected during execution 
 													  	console.log('results: %j', results);
@@ -795,6 +795,24 @@ app.post('/changeInterest', function (req, res) {
 				}
 			});
 		}
+	});
+});
+
+app.post('/recalculate', function (req, res) {
+	var email = req.session.email;
+	var options = {
+	  mode: 'text',
+	  args: [email]
+	};
+	 
+	PythonShell.run('py/make_recco.py', options, function (err8, results) {
+	  if (err1) {
+	  	console.log('/recalculate: Python Shell');
+			console.log(err1);
+			res.send({success: false});
+	  } else {
+	  	res.send({success: true});
+	  }
 	});
 });
 
