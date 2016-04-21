@@ -12,6 +12,8 @@ import ast
 dynamodb = boto3.resource('dynamodb')
 
 def make_recommendations(email,data):
+	print "My lauda is black and long"
+	print email
 	interests = ddb.get_interested(email);
 	job_id_list = []
 	lst_map = ast.literal_eval(interests["value"])
