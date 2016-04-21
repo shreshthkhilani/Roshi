@@ -12,8 +12,6 @@ import ast
 dynamodb = boto3.resource('dynamodb')
 
 def make_recommendations(email,data):
-	print "My lauda is black and long"
-	print email
 	interests = ddb.get_interested(email);
 	job_id_list = []
 	lst_map = ast.literal_eval(interests["value"])
@@ -43,12 +41,9 @@ def make_recommendations(email,data):
 	#print technicalities
 
 def populate_initial_recco(email, jobs):
-	print "Lauda 3"
-	print len(jobs)
 	user = ddb.get_users(email)
 	data = json.loads(user["value"])
 	s_type = ""
-
 	if len(data["school"]) == 0:
 		if "wharton" in email:
 			s_type = "wharton"
@@ -81,8 +76,10 @@ def populate_initial_recco(email, jobs):
 		else:
 			if s_type == "wharton":
 				technicality = 4
+				terms = ['analyst', 'quant', 'associate']
 			elif s_type == "seas":
 				technicality = 5
+				terms = ['software', 'engineering', 'developer']
 			else:
 				technicality = 3
 	pos_type = "";
@@ -93,8 +90,8 @@ def populate_initial_recco(email, jobs):
 			pos_type = "Intern"
 	reco_list = []
 	for val in jobs:
-		for term in terms:
-			if jobs[val].has_key("position"):
+		if jobs[val].has_key("position"):
+			for term in terms:
 				if term in jobs[val]["position"].lower():
 					reco_list.append(int(val))
 		if jobs[val].has_key("technicality"):
@@ -107,9 +104,8 @@ def populate_initial_recco(email, jobs):
 	db_map["value"] = json.dumps({'rlist':reco_list})
 	table = dynamodb.Table("recommended")
 	table.put_item(Item=db_map)
-	print db_map
 
-with open('/home/ubuntu/Roshi/py/position_data.json') as data_file:
+with open('position_data.json') as data_file:
 	data = json.load(data_file)
 
 make_recommendations(sys.argv[1], data)
