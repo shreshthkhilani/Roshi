@@ -44,6 +44,7 @@ def make_recommendations(email,data):
 
 def populate_initial_recco(email, jobs):
 	print "Lauda 3"
+	print len(jobs)
 	user = ddb.get_users(email)
 	data = json.loads(user["value"])
 	s_type = ""
@@ -106,7 +107,6 @@ def populate_initial_recco(email, jobs):
 	db_map["value"] = json.dumps({'rlist':reco_list})
 	table = dynamodb.Table("recommended")
 	table.put_item(Item=db_map)
-
 
 with open('/home/ubuntu/Roshi/py/position_data.json') as data_file:
 	data = json.load(data_file)
