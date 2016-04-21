@@ -8,11 +8,31 @@ import string
 import json
 import ddb
 import ast
+import random
+import operator
 
 dynamodb = boto3.resource('dynamodb')
+def top_words(lst):
+	words = {}
+	for val in lst:
+		for x in val["position"].split(" "):
+			if x.lower() in words:
+				words[x] = words[x] + 1
+			else:
+				words[x] = 1
+	sorted_words = sorted(words.items(), key=operator.itemgetter(1))[0:5]
+	final_lst = []
+	for tup in sorted_words:
+		final_lst.append(tup[0].lower())
+	final_lst = list(set(final_lst))
+	if "internship" in final_lst:
+		final_lst.remove("internship")
+	if "intern" in final_lst:
+		final_lst.remove("intern")
+	return final_lst
 
 def make_recommendations(email,data):
-	interests = ddb.get_interested(email);
+	interests = ddb.get_interested(email)
 	job_id_list = []
 	lst_map = ast.literal_eval(interests["value"])
 	for i in lst_map:
@@ -20,18 +40,33 @@ def make_recommendations(email,data):
 	if len(job_id_list) == 0:
 		populate_initial_recco(email, data)
 		return
+	comp_loc1 = ['washington, dc', 'philadelphia, pa', 'new york, ny', 'boston, ma']
+	comp_loc2 = ['san francisco, ca', 'los angeles, ca']
 	job_list = [ast.literal_eval(x["value"]) for x in ddb.get_jobs_list(job_id_list)]
 	locations = list(set([x["location"] for x in job_list]))
 	technicalities = list(set([x["technicality"] for x in job_list]))
 	typ = list(set([x["type"] for x in job_list]))
+	final_loc = []
+	for loc in locations:
+		if loc.lower() in comp_loc1:
+			final_loc.extend(comp_loc1)
+		elif loc.lower() in comp_loc2:
+			final_loc.extend(comp_loc2)
+	locations = list(set(final_loc))
+	word_lst = top_words(job_list)
 	reco_list = []
 	for val in data:
-		if data[val]["location"] in locations and data[val].has_key("technicality"):
+		if data[val]["location"].lower() in locations and data[val].has_key("technicality"):
 			if data[val]["technicality"] in technicalities:
 				if data[val]["type"] in typ:
-					reco_list.append(int(val))
+					for w in word_lst:
+						if data[val].has_key("position"):
+							if w in data[val]["position"].lower():
+								reco_list.append(int(val))
 	reco_list.extend(job_id_list)
 	reco_list = list(set(reco_list))
+	random.shuffle(reco_list)
+	reco_list = reco_list[0:30]
 	db_map = {}
 	db_map["email"] = email
 	db_map["value"] = json.dumps({'rlist':reco_list})
@@ -99,6 +134,8 @@ def populate_initial_recco(email, jobs):
 				if jobs[val]["type"] == pos_type:
 					reco_list.append(int(val))
 	reco_list = list(set(reco_list))
+	random.shuffle(reco_list)
+	reco_list = reco_list[0:30]
 	db_map = {}
 	db_map["email"] = email
 	db_map["value"] = json.dumps({'rlist':reco_list})
