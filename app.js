@@ -660,6 +660,9 @@ app.get('/jobs', function (req, res) {
 								console.log(err3);
 							} else {
 								var value3 = JSON.parse(res3.value);
+								if (value3.desc.length > 200) {
+									value3.desc = value3.desc.substring(0,200) + "...";
+								}
 								joblist.push(value3);
 								callback();
 							}

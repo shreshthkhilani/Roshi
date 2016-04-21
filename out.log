@@ -1,0 +1,169 @@
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+{ firstname: 'Dhrupad',
+  lastname: 'Bhardwaj',
+  gpa: '3.5',
+  year: '2016',
+  school: [ 'seas', '' ],
+  major: [ 'Computer Science' ],
+  minor: [ 'Mathematics', 'Operations Management' ],
+  work: 
+   { summer2015: { company: 'Google', position: 'Software Developer Intern' },
+     summer2014: { company: 'Infosys', position: 'Software Developer Intern' } },
+  clubs: 
+   [ { group: 'IAA', position: 'VP' },
+     { group: 'PIC', position: 'Director of Sponsroship' } ],
+  projects: 'This!',
+  classes: [ 'CIS 380', 'CIS 320', 'NETS 212', 'CIS 371' ] }
+progress 0 16384 692619
+progress 0 32768 692619
+progress 0 49152 692619
+progress 0 65536 692619
+progress 0 81920 692619
+progress 0 98304 692619
+progress 0 114688 692619
+progress 0 131072 692619
+progress 0 147456 692619
+progress 0 163840 692619
+progress 0 180224 692619
+progress 0 196608 692619
+progress 0 212992 692619
+progress 0 229376 692619
+progress 0 245760 692619
+progress 0 262144 692619
+progress 0 278528 692619
+progress 0 294912 692619
+progress 0 311296 692619
+progress 0 327680 692619
+progress 0 344064 692619
+progress 0 360448 692619
+progress 0 376832 692619
+progress 0 393216 692619
+progress 0 409600 692619
+progress 0 425984 692619
+progress 0 442368 692619
+progress 0 458752 692619
+progress 0 475136 692619
+progress 0 491520 692619
+progress 0 507904 692619
+progress 0 524288 692619
+progress 0 540672 692619
+progress 0 557056 692619
+progress 0 573440 692619
+progress 0 589824 692619
+progress 0 606208 692619
+progress 0 622592 692619
+progress 0 638976 692619
+progress 0 655360 692619
+progress 0 671744 692619
+progress 0 688128 692619
+progress 0 692619 692619
+progress 0 692619 692619
+done uploading
+/create: Send Mail
+{ [Error: Invalid login: 534-5.7.14 <https://accounts.google.com/ContinueSignIn?sarp=1&scc=1&plt=AKgnsbvqV
+534-5.7.14 EJhhBRCi8R3ZTCeyJDA-YRnlPVba1apzs-XnX40zfl8b1z0tGXJaRg4sRr5_wSf8VVwjSa
+534-5.7.14 KbwweuECLIQ_U2smCzNY1MFo1vyQbl46Ec0oYFGJC-yIvfpWz28wFGUh0GFfwcR7fhVmk7
+534-5.7.14 82unfUxlE1mSJYQc8fq8ZA2zl2LqaNAM0hGWS53OWbIgrtJyryXIjh7haCM8sBhjMkRTMn
+534-5.7.14 Lrh4NiRYZrk2QyNZZJ_ZRYrjHT_U> Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 o81sm7152532qge.34 - gsmtp]
+  code: 'EAUTH',
+  response: '534-5.7.14 <https://accounts.google.com/ContinueSignIn?sarp=1&scc=1&plt=AKgnsbvqV\n534-5.7.14 EJhhBRCi8R3ZTCeyJDA-YRnlPVba1apzs-XnX40zfl8b1z0tGXJaRg4sRr5_wSf8VVwjSa\n534-5.7.14 KbwweuECLIQ_U2smCzNY1MFo1vyQbl46Ec0oYFGJC-yIvfpWz28wFGUh0GFfwcR7fhVmk7\n534-5.7.14 82unfUxlE1mSJYQc8fq8ZA2zl2LqaNAM0hGWS53OWbIgrtJyryXIjh7haCM8sBhjMkRTMn\n534-5.7.14 Lrh4NiRYZrk2QyNZZJ_ZRYrjHT_U> Please log in via your web browser and\n534-5.7.14 then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 o81sm7152532qge.34 - gsmtp',
+  responseCode: 534 }
+/v: Send Email
+{ [Error: Invalid login: 534-5.7.14 <https://accounts.google.com/ContinueSignIn?sarp=1&scc=1&plt=AKgnsbvQG
+534-5.7.14 XYuoo0kGSJMSp6rWcya9VeHC-TCN2MOCxyzFo1cL9GNTyxdwTuUQHBtD1cxAqiEzJdyTrb
+534-5.7.14 LcHbANfPWmjFkfvV41mcawEDpjWkXqbqLtIlYq8_TLu3iLENuGFvB3KgNtFEG4s3Bv9Tc6
+534-5.7.14 6oWvQ4vXsdyY3y1E167XczZozf44ZsJevWhA-GhEj_e_zTWd5QfgN1s7G-roGJrQ0ZqfO1
+534-5.7.14 06jfYKlxZF1H0MDYJmFBOckXdNcc> Please log in via your web browser and
+534-5.7.14 then try again.
+534-5.7.14  Learn more at
+534 5.7.14  https://support.google.com/mail/answer/78754 200sm7744164qhm.47 - gsmtp]
+  code: 'EAUTH',
+  response: '534-5.7.14 <https://accounts.google.com/ContinueSignIn?sarp=1&scc=1&plt=AKgnsbvQG\n534-5.7.14 XYuoo0kGSJMSp6rWcya9VeHC-TCN2MOCxyzFo1cL9GNTyxdwTuUQHBtD1cxAqiEzJdyTrb\n534-5.7.14 LcHbANfPWmjFkfvV41mcawEDpjWkXqbqLtIlYq8_TLu3iLENuGFvB3KgNtFEG4s3Bv9Tc6\n534-5.7.14 6oWvQ4vXsdyY3y1E167XczZozf44ZsJevWhA-GhEj_e_zTWd5QfgN1s7G-roGJrQ0ZqfO1\n534-5.7.14 06jfYKlxZF1H0MDYJmFBOckXdNcc> Please log in via your web browser and\n534-5.7.14 then try again.\n534-5.7.14  Learn more at\n534 5.7.14  https://support.google.com/mail/answer/78754 200sm7744164qhm.47 - gsmtp',
+  responseCode: 534 }
+{ firstname: 'Shreshth',
+  lastname: 'Khilani',
+  gpa: '3.33',
+  year: '2016',
+  school: [ 'seas', '' ],
+  major: [ 'Computer Science' ],
+  work: 
+   { summer2015: 
+      { company: 'Bloomberg LP',
+        position: 'Software Developer Intern' },
+     summer2014: 
+      { company: 'Bloomberg LP',
+        position: 'Software Developer Intern' } },
+  clubs: 
+   [ { group: 'PenNaatak Theatre', position: 'Chair' },
+     { group: 'Penn Cinema Initiative',
+       position: 'Web Project Manager and Treasurer' } ],
+  projects: '',
+  minor: [],
+  classes: [] }
+progress 0 16384 72119
+progress 0 32768 72119
+progress 0 49152 72119
+progress 0 65536 72119
+progress 0 72119 72119
+progress 0 72119 72119
+done uploading
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+{ firstname: 'Dhrupad',
+  lastname: 'Bhardwaj',
+  gpa: '3.46',
+  year: '2016',
+  school: [ 'seas', '' ],
+  major: [ 'Computer Science', 'Finance' ],
+  minor: [ 'Mathematics' ],
+  work: 
+   { summer2015: 
+      { company: 'Google Inc.',
+        position: 'Software Engineering Intern' },
+     summer2014: 
+      { company: 'Infosys Ltd.',
+        position: 'InStep Software Engineering Intern' } },
+  clubs: 
+   [ { group: 'International Affairs Association',
+       position: 'Vice-President' },
+     { group: 'Penn Innovation Conference ',
+       position: 'Co-Founder / Conference Chair' } ],
+  projects: '',
+  classes: [ 'OPIM 353', 'FNCE 100', 'CIS 121', 'CIS 331' ] }
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+/create: Python Shell
+{ [Error: IOError: [Errno 2] No such file or directory: '../position_data.json']
+  traceback: 'Traceback (most recent call last):\n  File "py/make_recco.py", line 108, in <module>\n    with open(\'../position_data.json\') as data_file:\nIOError: [Errno 2] No such file or directory: \'../position_data.json\'\n',
+  executable: 'python',
+  options: null,
+  script: 'py/make_recco.py',
+  args: [ 'dhrupadb@wharton.upenn.edu' ],
+  exitCode: 1 }
+App listening at http://localhost:8080
+results: null
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+results: ["My lauda is black and long","dhrupadb@wharton.upenn.edu"]
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+results: ["My lauda is black and long","dhrupadb@wharton.upenn.edu","Lauda 3"]
+App listening at http://localhost:8080
+results: ["My lauda is black and long","dhrupadb@wharton.upenn.edu","Lauda 3"]
+results: ["My lauda is black and long","dhrupadb@wharton.upenn.edu","Lauda 3","775"]
+results: ["My lauda is black and long","dhrupadb@wharton.upenn.edu","Lauda 3","775","{'email': 'dhrupadb@wharton.upenn.edu', 'value': '{\"rlist\": []}'}"]
+results: null
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+App listening at http://localhost:8080
+App listening at http://localhost:8080

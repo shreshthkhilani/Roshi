@@ -1,0 +1,131 @@
+TypeError: /home/ubuntu/Roshi/views/home.ejs:63
+    61| 	<h4>School(s), Major(s), and Minor(s)</h4>
+    62| 	<div class="row">
+ >> 63| 		<div class="col-xs-6">
+    64| 			<div id="school0Div" hidden><%= school[0] %></div>
+    65| 			<select class="form-control" id="school0">
+    66| 				<option value="" disabled selected>Primary School</option>
+
+Cannot read property '0' of undefined
+    at eval (eval at <anonymous> (/home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:237:14), <anonymous>:29:2491)
+    at eval (eval at <anonymous> (/home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:237:14), <anonymous>:29:10809)
+    at /home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:250:15
+    at Object.exports.render (/home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:288:13)
+    at Object.exports.renderFile (/home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:318:20)
+    at View.module.exports [as engine] (/home/ubuntu/Roshi/node_modules/ejs-locals/index.js:85:7)
+    at View.render (/home/ubuntu/Roshi/node_modules/express/lib/view.js:126:8)
+    at tryRender (/home/ubuntu/Roshi/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/home/ubuntu/Roshi/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/home/ubuntu/Roshi/node_modules/express/lib/response.js:961:7)
+TypeError: /home/ubuntu/Roshi/views/home.ejs:63
+    61| 	<h4>School(s), Major(s), and Minor(s)</h4>
+    62| 	<div class="row">
+ >> 63| 		<div class="col-xs-6">
+    64| 			<div id="school0Div" hidden><%= school[0] %></div>
+    65| 			<select class="form-control" id="school0">
+    66| 				<option value="" disabled selected>Primary School</option>
+
+Cannot read property '0' of undefined
+    at eval (eval at <anonymous> (/home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:237:14), <anonymous>:29:2491)
+    at eval (eval at <anonymous> (/home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:237:14), <anonymous>:29:10809)
+    at /home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:250:15
+    at Object.exports.render (/home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:288:13)
+    at Object.exports.renderFile (/home/ubuntu/Roshi/node_modules/ejs-locals/node_modules/ejs/lib/ejs.js:318:20)
+    at View.module.exports [as engine] (/home/ubuntu/Roshi/node_modules/ejs-locals/index.js:85:7)
+    at View.render (/home/ubuntu/Roshi/node_modules/express/lib/view.js:126:8)
+    at tryRender (/home/ubuntu/Roshi/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/home/ubuntu/Roshi/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/home/ubuntu/Roshi/node_modules/express/lib/response.js:961:7)
+
+undefined:1
+{u'company': u'Hometeam', u'technicality': 2, u'location': u'New York, NY', u'
+ ^
+SyntaxError: Unexpected token u
+    at Object.parse (native)
+    at /home/ubuntu/Roshi/app.js:647:27
+    at /home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:246:11
+    at /home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:965:17
+    at IncomingMessage.<anonymous> (/home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:920:23)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:944:16
+    at process._tickDomainCallback (node.js:492:13)
+
+/home/ubuntu/Roshi/app.js:647
+								var value3 = JSON.parse(res3.value);
+								                            ^
+TypeError: Cannot read property 'value' of undefined
+    at /home/ubuntu/Roshi/app.js:647:37
+    at /home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:246:11
+    at /home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:965:17
+    at IncomingMessage.<anonymous> (/home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:920:23)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:944:16
+    at process._tickDomainCallback (node.js:492:13)
+
+/home/ubuntu/Roshi/app.js:281
+													  if (err8) {
+													      ^
+ReferenceError: err8 is not defined
+    at /home/ubuntu/Roshi/app.js:281:20
+    at null._endCallback (/home/ubuntu/Roshi/node_modules/python-shell/index.js:165:25)
+    at terminateIfNeeded (/home/ubuntu/Roshi/node_modules/python-shell/index.js:116:35)
+    at ChildProcess.<anonymous> (/home/ubuntu/Roshi/node_modules/python-shell/index.js:88:9)
+    at ChildProcess.emit (events.js:98:17)
+    at Process.ChildProcess._handle.onexit (child_process.js:820:12)
+
+/home/ubuntu/Roshi/app.js:281
+													  if (err8) {
+													      ^
+ReferenceError: err8 is not defined
+    at /home/ubuntu/Roshi/app.js:281:20
+    at null._endCallback (/home/ubuntu/Roshi/node_modules/python-shell/index.js:165:25)
+    at terminateIfNeeded (/home/ubuntu/Roshi/node_modules/python-shell/index.js:116:35)
+    at ChildProcess.<anonymous> (/home/ubuntu/Roshi/node_modules/python-shell/index.js:88:9)
+    at ChildProcess.emit (events.js:98:17)
+    at Process.ChildProcess._handle.onexit (child_process.js:820:12)
+
+/home/ubuntu/Roshi/app.js:554
+			var value = JSON.parse(res1.value);
+			                           ^
+TypeError: Cannot read property 'value' of undefined
+    at /home/ubuntu/Roshi/app.js:554:31
+    at /home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:246:11
+    at /home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:965:17
+    at IncomingMessage.<anonymous> (/home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:920:23)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:944:16
+    at process._tickDomainCallback (node.js:492:13)
+
+/home/ubuntu/Roshi/app.js:554
+			var value = JSON.parse(res1.value);
+			                           ^
+TypeError: Cannot read property 'value' of undefined
+    at /home/ubuntu/Roshi/app.js:554:31
+    at /home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:246:11
+    at /home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:965:17
+    at IncomingMessage.<anonymous> (/home/ubuntu/Roshi/node_modules/dynamodb/lib/ddb.js:920:23)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:944:16
+    at process._tickDomainCallback (node.js:492:13)
+
+/home/ubuntu/Roshi/app.js:803
+	  if (err1) {
+	      ^
+ReferenceError: err1 is not defined
+    at /home/ubuntu/Roshi/app.js:803:8
+    at null._endCallback (/home/ubuntu/Roshi/node_modules/python-shell/index.js:166:16)
+    at terminateIfNeeded (/home/ubuntu/Roshi/node_modules/python-shell/index.js:116:35)
+    at ChildProcess.<anonymous> (/home/ubuntu/Roshi/node_modules/python-shell/index.js:88:9)
+    at ChildProcess.emit (events.js:98:17)
+    at Process.ChildProcess._handle.onexit (child_process.js:820:12)
+
+/home/ubuntu/Roshi/app.js:803
+	  if (err1) {
+	      ^
+ReferenceError: err1 is not defined
+    at /home/ubuntu/Roshi/app.js:803:8
+    at null._endCallback (/home/ubuntu/Roshi/node_modules/python-shell/index.js:165:25)
+    at terminateIfNeeded (/home/ubuntu/Roshi/node_modules/python-shell/index.js:116:35)
+    at ChildProcess.<anonymous> (/home/ubuntu/Roshi/node_modules/python-shell/index.js:88:9)
+    at ChildProcess.emit (events.js:98:17)
+    at Process.ChildProcess._handle.onexit (child_process.js:820:12)
