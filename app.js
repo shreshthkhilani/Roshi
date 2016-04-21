@@ -805,7 +805,7 @@ app.post('/recalculate', function (req, res) {
 	  args: [email]
 	};
 	 
-	PythonShell.run('py/make_recco.py', options, function (err8, results) {
+	PythonShell.run('py/make_recco.py', options, function (err1, results) {
 	  if (err1) {
 	  	console.log('/recalculate: Python Shell');
 			console.log(err1);
