@@ -107,6 +107,7 @@ def populate_initial_recco(email, jobs):
 	db_map["value"] = json.dumps({'rlist':reco_list})
 	table = dynamodb.Table("recommended")
 	table.put_item(Item=db_map)
+	print db_map
 
 with open('/home/ubuntu/Roshi/py/position_data.json') as data_file:
 	data = json.load(data_file)
