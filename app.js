@@ -645,9 +645,6 @@ app.get('/jobs', function (req, res) {
 								console.log(err3);
 							} else {
 								var value3 = JSON.parse(res3.value);
-								if (value3.desc.length > 500) {
-									value3.desc = value3.desc.substring(0,500) + "...";
-								}
 								joblist.push(value3);
 								callback();
 							}
@@ -715,11 +712,8 @@ app.get('/interested', function (req, res) {
 						console.log('/interested: Get Item 2');
 						console.log(err3);
 					} else {
-						var value3 = JSON.parse(res3.value);
-						if (value3.desc.length > 500) {
-							value3.desc = value3.desc.substring(0,500) + "...";
-						}
-						joblist.push(value3);
+						var value = JSON.parse(res3.value);
+						joblist.push(value);
 						callback();
 					}
 				});
