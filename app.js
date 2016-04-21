@@ -21,6 +21,7 @@ var dateFormat = require('dateformat');
 var bcrypt = require('bcrypt');
 var nodemailer = require('nodemailer');
 var uuid = require('node-uuid');
+var PythonShell = require('python-shell');
 app.engine('ejs', engine);
 app.set('views', path.join( __dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -271,23 +272,37 @@ app.post('/create', function (req, res) {
 													console.log(err7);
 													res.send({success: true, msg: 'Error with DB, mail not sent!'});
 												} else {
-													var emailhtml = 'Click this link to complete verification:\n' + verifyurl;
-													var mailOptions = {
-						    						from: 'Roshi Recruiting <' + emailObj.user + '>',
-						    						to: email,
-						    						subject: '[Roshi] Verify Email Address', 
-						    						text: emailhtml
+													var options = {
+													  mode: 'text',
+													  args: [email]
 													};
-													transporter.sendMail(mailOptions, function (err4, info) {
-														if (err4) {
-															console.log('/create: Send Mail');
-															console.log(err4);
-															res.send({success: true, msg: 'Mail not sent!'});
-															return;
-														} else {
-															res.send({success: true, msg: 'Welcome!'});
-															return;
-														}
+													 
+													PythonShell.run('py/make_recco.py', options, function (err, results) {
+													  if (err8) {
+													  	console.log('/create: Python Shell');
+														console.log(err8);
+													  } else {
+													  	// results is an array consisting of messages collected during execution 
+													  	console.log('results: %j', results);
+													  	var emailhtml = 'Click this link to complete verification:\n' + verifyurl;
+														var mailOptions = {
+							    						from: 'Roshi Recruiting <' + emailObj.user + '>',
+							    						to: email,
+							    						subject: '[Roshi] Verify Email Address', 
+							    						text: emailhtml
+														};
+														transporter.sendMail(mailOptions, function (err4, info) {
+															if (err4) {
+																console.log('/create: Send Mail');
+																console.log(err4);
+																res.send({success: true, msg: 'Mail not sent!'});
+																return;
+															} else {
+																res.send({success: true, msg: 'Welcome!'});
+																return;
+															}
+														});
+													  }
 													});
 												}
 											});
