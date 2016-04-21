@@ -43,6 +43,7 @@ def make_recommendations(email,data):
 	#print technicalities
 
 def populate_initial_recco(email, jobs):
+	print "Lauda 3"
 	user = ddb.get_users(email)
 	data = json.loads(user["value"])
 	s_type = ""
