@@ -280,7 +280,7 @@ app.post('/create', function (req, res) {
 													PythonShell.run('py/make_recco.py', options, function (err8, results) {
 													  if (err8) {
 													  	console.log('/create: Python Shell');
-														console.log(err8);
+															console.log(err8);
 													  } else {
 													  	// results is an array consisting of messages collected during execution 
 													  	console.log('results: %j', results);
@@ -660,8 +660,8 @@ app.get('/jobs', function (req, res) {
 								console.log(err3);
 							} else {
 								var value3 = JSON.parse(res3.value);
-								if (value3.desc.length > 500) {
-									value3.desc = value3.desc.substring(0,500) + "...";
+								if (value3.desc.length > 200) {
+									value3.desc = value3.desc.substring(0,200) + "...";
 								}
 								joblist.push(value3);
 								callback();
@@ -730,11 +730,8 @@ app.get('/interested', function (req, res) {
 						console.log('/interested: Get Item 2');
 						console.log(err3);
 					} else {
-						var value3 = JSON.parse(res3.value);
-						if (value3.desc.length > 500) {
-							value3.desc = value3.desc.substring(0,500) + "...";
-						}
-						joblist.push(value3);
+						var value = JSON.parse(res3.value);
+						joblist.push(value);
 						callback();
 					}
 				});
@@ -795,6 +792,24 @@ app.post('/changeInterest', function (req, res) {
 				}
 			});
 		}
+	});
+});
+
+app.post('/recalculate', function (req, res) {
+	var email = req.session.email;
+	var options = {
+	  mode: 'text',
+	  args: [email]
+	};
+	 
+	PythonShell.run('py/make_recco.py', options, function (err1, results) {
+	  if (err1) {
+	  	console.log('/recalculate: Python Shell');
+			console.log(err1);
+			res.send({success: false});
+	  } else {
+	  	res.send({success: true});
+	  }
 	});
 });
 
